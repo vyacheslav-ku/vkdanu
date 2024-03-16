@@ -2,20 +2,17 @@
 name = "vkdanu"
 version = "0.1.0"
 description = ""
-authors = ["Vyacheslav <danubise@gmail.com>"]
+authors = ["vyacheslav <<88930987+vyacheslav-ku@users.noreply.github.com>>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
-notebook = "^7.1.0"
-pandas = "^2.2.1"
-tfidfinheritvectorizer = "^0.1"
-scikit-learn = "^1.4.1.post1"
-plotly = "^5.19.0"
-nltk = "^3.8.1"
+python = "^3.8"
+notebook = "^7.1.2"
+plotly = "^5.20.0"
 xgboost = "^2.0.3"
-shap = "^0.45.0"
-matplotlib = "^3.8.3"
+scikit-learn = "1.3.2"
+ipywidgets = "^8.1.2"
+widgetsnbextension = "^4.0.10"
 
 
 [build-system]
