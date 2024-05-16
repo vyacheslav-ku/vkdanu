@@ -95,7 +95,7 @@ async def cmd_start(message: types.Message):
 @dp.message(Command("quiz"))
 async def cmd_quiz(message: types.Message):
     await message.answer(f"Давайте начнем квиз!")
-    await new_quiz(message)
+    await new_quiz(message, bot)
 
 
 # Запуск процесса поллинга новых апдейтов

@@ -1,4 +1,7 @@
+import os
+from aiogram.types import URLInputFile
 import aiosqlite
+from aiogram.types import InputFile
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 from constants import DB_NAME
@@ -33,13 +36,25 @@ async def clean_answers(user_id):
         await db.execute('DELETE FROM quiz_answers WHERE user_id = (?)', (user_id,))
         # Сохраняем изменения
         await db.commit()
+async def send_image(bot , message: types.Message, user_id):
+    try:
+        IMAGE_FILENAME = os.getenv("IMAGE_FILENAME", "")
+        #photo = open(IMAGE_FILENAME, 'rb')
+        photo = URLInputFile(
+            IMAGE_FILENAME,
+            filename="python-quiez.png"
+        )
+        #photo = InputFile(IMAGE_FILENAME)
+        await bot.send_photo(chat_id=message.chat.id, photo=photo)
+    except Exception as e:
+        print(str(e))
 
-
-async def new_quiz(message):
+async def new_quiz(message, bot):
     user_id = message.from_user.id
     current_question_index = 0
     await update_quiz_index(user_id, current_question_index)
     await clean_answers(user_id)
+    await send_image(bot, message, user_id)
     await get_question(message, user_id)
 
 
